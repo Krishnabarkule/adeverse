@@ -1,0 +1,7 @@
+{
+	"bucket_name": "milvus-bucket-eks",
+	"s3_source_folder": "Unprocessed",
+	"s3_target_folder": "processed",
+	"local_folder": "/Users/krishnasundarraobarkule/Desktop/files/",
+	"cluster_id": "0828-132635-71kqd24v"
+}
