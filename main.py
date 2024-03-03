@@ -34,13 +34,13 @@ def main():
     cluster_id = parameters['cluster_id']
 
     try:
-        start_cluster(cluster_id=cluster_id,db_host=db_host, db_token=db_token)
+        start_cluster(cluster_id=cluster_id,db_host=db_host,db_token=db_token)
         copy_all_files_to_s3(local_folder, bucket_name, s3_source_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
         copy_files_within_bucket(bucket_name, s3_source_folder, s3_target_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
-        combined_df = read_json_data_from_s3(bucket_name, folder_prefix=s3_source_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
-        embedding_df = create_embedding_dataframe(combined_df)
-        create_milvus_collection(embedding_df)
-        delete_files_in_folder(bucket_name, s3_source_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
+        # combined_df = read_json_data_from_s3(bucket_name, folder_prefix=s3_source_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
+        # embedding_df = create_embedding_dataframe(combined_df)
+        # create_milvus_collection(embedding_df)
+        # delete_files_in_folder(bucket_name, s3_source_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
 
     except Exception as e:
         print(f"An error occurred: {e}")
