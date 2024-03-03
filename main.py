@@ -6,8 +6,11 @@ from script.unpro_to_pro import copy_files_within_bucket, delete_files_in_folder
 #from script.milvus import read_json_data_from_s3,create_embedding_dataframe, create_milvus_collection
 
 
-CONFIG_FILE_PATH = '/Users/krishnasundarraobarkule/Desktop/adverse_event_detection/cred.ini'
-JSON_FILE_PATH = '/Users/krishnasundarraobarkule/Desktop/adverse_event_detection/parameter.json'
+# CONFIG_FILE_PATH = '/Users/krishnasundarraobarkule/Desktop/adverse_event_detection/cred.ini'
+# JSON_FILE_PATH = '/Users/krishnasundarraobarkule/Desktop/adverse_event_detection/parameter.json'
+
+CONFIG_FILE_PATH = '/home/ubuntu/adeverse/cred.ini'
+JSON_FILE_PATH = '/home/ubuntu/adeverse/parameter.json'
 
 def load_config(file_path):
     config = configparser.ConfigParser()
