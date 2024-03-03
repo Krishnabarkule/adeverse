@@ -2,3 +2,4 @@ databricks-sdk==0.19.1
 boto3==1.28.0
 milvus==2.2.6
 botocore
+pandas
