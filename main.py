@@ -3,7 +3,7 @@ import configparser
 from script.cluster import start_cluster
 from script.local_to_s3 import copy_all_files_to_s3
 from script.unpro_to_pro import copy_files_within_bucket, delete_files_in_folder
-from script.milvus import read_json_data_from_s3,create_embedding_dataframe, create_milvus_collection
+#from script.milvus import read_json_data_from_s3,create_embedding_dataframe, create_milvus_collection
 
 
 CONFIG_FILE_PATH = '/Users/krishnasundarraobarkule/Desktop/adverse_event_detection/cred.ini'
