@@ -2,15 +2,16 @@ import json
 import configparser
 # from script.cluster import start_cluster
 from script.local_to_s3 import copy_all_files_to_s3
-from script.unpro_to_pro import copy_files_within_bucket, delete_files_in_folder
+# from script.unpro_to_pro import copy_files_if_not_exists, delete_files_in_folder
+from script.source_to_desig import copy_files_if_not_exists, delete_files_in_folder
 #from script.milvus import read_json_data_from_s3,create_embedding_dataframe, create_milvus_collection
 
 
 # CONFIG_FILE_PATH = '/Users/krishnasundarraobarkule/Desktop/adverse_event_detection/cred.ini'
 # JSON_FILE_PATH = '/Users/krishnasundarraobarkule/Desktop/adverse_event_detection/parameter.json'
 
-CONFIG_FILE_PATH = '/home/ubuntu/adeverse/cred.ini'
-JSON_FILE_PATH = '/home/ubuntu/adeverse/parameter.json'
+CONFIG_FILE_PATH = '/Users/krishnasundarraobarkule/Desktop/adverse_event_detection/cred.ini'
+JSON_FILE_PATH = '//Users/krishnasundarraobarkule/Desktop/adverse_event_detection/parameter.json'
 
 def load_config(file_path):
     config = configparser.ConfigParser()
@@ -39,11 +40,11 @@ def main():
     try:
         # start_cluster(cluster_id=cluster_id,db_host=db_host,db_token=db_token)
         copy_all_files_to_s3(local_folder, bucket_name, s3_source_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
-        copy_files_within_bucket(bucket_name, s3_source_folder, s3_target_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
+        copy_files_if_not_exists(bucket_name, s3_source_folder, s3_target_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
         # combined_df = read_json_data_from_s3(bucket_name, folder_prefix=s3_source_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
         # embedding_df = create_embedding_dataframe(combined_df)
         # create_milvus_collection(embedding_df)
-        # delete_files_in_folder(bucket_name, s3_source_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
+        delete_files_in_folder(bucket_name, s3_source_folder, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token)
 
     except Exception as e:
         print(f"An error occurred: {e}")

@@ -1,0 +1,13 @@
+
+
+
+
+text : (base) krishnasundarraobarkule@AGLS-MLT-609 adverse_event_detection % /Users/krishnasundarraobarkule/anaconda3/bin/python /Users/krishnasundarraobarkule/Desktop/adverse_event_detection/files/demo.pyFiles deleted successfully.(base) krishnasundarraobarkule@AGLS-MLT-609 adverse_event_detection % /Users/krishnasundarraobarkule/anaconda3/bin/python 
+
+
+split(100)
+
+
+[
+    [10 char][100][100][100]
+    ]

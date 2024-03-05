@@ -4,12 +4,12 @@ import os
 
 # Replace with your actual AWS credentials and bucket name
 
-# aws_access_key_id='ASIAXWDKBRAV6TF5PQRN'
-# aws_secret_access_key='UKA7J3xKUpRftVar3++AapAt6GZOUEiTOp2B39XP'
-# aws_session_token='IQoJb3JpZ2luX2VjEP3//////////wEaCXVzLXdlc3QtMiJHMEUCIQD8XevDZezAQ5bk1cBaXQsQWZBmKyx6876ULPUn957rLgIgZhTM4NB9ADNAvAE46KLYzpft+xfpTK/Po6ZoybSBq+AqtAMI5v//////////ARAAGgw1Mjg1MDMzNzU5MTUiDHAji7Hd2hkVJu6qAiqIAyXN6GuMlc0mA84EsTcsqRgOrYH+boHvDUeSd9P+aSWF7GB9lrRaihFTVvadaoD6wgaQUhz8MI1C52jDHOedN+vyS59yD2UgJNTaTp/DAa70UXdZW++L/TPUcw4Hb38WSih97mrGtIY6NWeYXVqr7eX0usA3Ot5XHZ39zibmcDong547S2Qcu2KWhuA0DBekEiz9THMjggv1gjNxNy7HuryA3MYMj6r/UPfVDa8kPXPvyEw0LMPhFfoHeoVnHXrA5Og1fRXWhlFRX1HN+ISXW1zh6ioffeaQgheoGpcewP20/HOinpg7G5g+RsITJeR/rJTljhZkLIvztKMkh28aTZRlQBnaKWwkSJzF+xxzQQ7kKMKAPBewlBRBg6MPfrAWKgyLWvKB1iZKhh3fd7I6i5UKSOGHCadox0i1bBGjcDt0KiV6lP07c0qXEQjsjx+7g5Xiyw5zkBT62MxAvT2lBuB0zxBJ2OinStrkuBLgDwaXsmEyYm8BnDYJifq2nMFttaYURBrVaMkGMLLv+q4GOqYBS/MEqzHSZH1JUKYw6W0RkngxxHQIBYdcNCaVG9bv84zCI5viRYmU2Wlm2v9XS9dICdA9mgzRZagJVLFyUOg7UebEB1m1iDAIUCQ43pbH+lQMaAB3kPZ9wS2Cfy8EioydJMmdSyn35D6uAc8lXvZvf6mh4ISoGPUBiacsq6sxkcb00gGAWgHqED9knZxtsY5rB6ZR/ypR7V8IUCAVGPlNFzC3xvFwgQ=='
+# aws_access_key_id="ASIAXWDKBRAVQDLYIG4B"
+# aws_secret_access_key="N2OrCzKTnuN9akuaa4hphsQYeAuHsBdDK6dnac/W"
+# aws_session_token="IQoJb3JpZ2luX2VjEI7//////////wEaCXVzLXdlc3QtMiJGMEQCIGzTWlVkKE8aOj1ZXzBlNoe7HTs8sefNO6xgQS2nEsl3AiB088E6ITxZhk5p9oN094kCyiYgwii3NZRxGynrCE2GeCq0AwiH//////////8BEAAaDDUyODUwMzM3NTkxNSIMN3ApZqTnsHPh0XTpKogDWWei1Mmwb0sLXPhWcauFKIHQ0fvJPORhoyilAtd05OHWM5SUUn8xw+hqSplvRBpdrvUKgQbI4oF7/RuIMEq227UH8jg7Bw1oHiBA0ZSqMV2okUY+AOWibh1O2sVhhY+g/MojEwYfSsb5hepKNzGj0xNE5ybecFBG/RUxSK1ygaQhkFhoJhmpdUQpRW0kleE0YAFgqlLxTwnBHyDjAzyh9dnQgxFix0txj4vX3QcGmeu6leI8q908nClFwXXY2faaAdP8ZR4aieKMy+tEaIbGo+F//76v6rjrTWuROhq0dUr9Wr3CROWl6iHF6e6/eXMp8uh0N4cCsbKjTxC3/C0anjhpGX+UcfIYbp+4/M1Qf+McgRjucSsI8tCtEvglMGlSrmUu1hMxPy7OeJHLQ8e8fp0fHrO3Vc+cjWCZ6wEkTHN+VGVYCUQCwEqbXPam8R0jh0t2jJg0fXVoxT0iQ7JE5eOgdRS7SU7SvjQEYVJcxpM/oGXO1GWaZBPiUtnS7n/pCZkPBhCttqYwz+CarwY6pwHnwlsEijxDeKRUI9MFTafqV+N8vMhagkM711QYvC99LY/M/x6rbJyyRmlgySaoQ90mrvwwTUsCk/WSRZxR5GJSLQNPz2K2hgMN375QUzPwHz2FxgRbRmYul/KkCQIXzDZglQkd0V9TYpYqWfq5wba/h/IWlPDqMDB+hGsuNHnx3+EIc/Og8GkXluwKm1SwXy5LF/8jVaLAaym1Q0he/RlmLqHXGxMLNg=="
 # LOCAL_DIR='/Users/krishnasundarraobarkule/Desktop/files/'
 # BUCKET_NAME='milvus-bucket-eks'
-# S3_FOLDER_NAME='unprocessed'  # The folder within the S3 bucket
+# S3_FOLDER_NAME='source/'  # The folder within the S3 bucket
 
 # # Specify the local directory containing files
 
@@ -33,7 +33,7 @@ def copy_all_files_to_s3(local_dir, bucket_name, s3_folder_name, aws_access_key_
     for filename in os.listdir(local_dir):
         local_file_path = os.path.join(local_dir, filename)
         try:
-            s3_key = f"{s3_folder_name}/{filename}" if s3_folder_name else filename
+            s3_key = f"{s3_folder_name}{filename}" if s3_folder_name else filename
             with open(local_file_path, "rb") as data:
                 bucket.upload_fileobj(data, s3_key)
             print(f"Successfully uploaded {filename} to S3 bucket {bucket_name}/{s3_folder_name}")
